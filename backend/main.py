@@ -2,6 +2,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
 from pydantic import BaseModel
 import ollama
+from backend.routes.chat_routes import router as chat_router
+from backend.routes.upload_routes import router as upload_router
+
+
 
 app = FastAPI()
 app.add_middleware(
@@ -11,6 +15,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(chat_router)
+app.include_router(upload_router)
 
 class ChatRequest(BaseModel):
     message: str
