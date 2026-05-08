@@ -3,25 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NRSC Knowledge Expert System</title>
+    <title>NRSC AI | Knowledge Expert System</title>
     <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-section">
+                <i class='bx bxs-shield-quarter'></i>
+                <span>NRSC AI</span>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" data-target="dashboard">
+                    <i class='bx bxs-dashboard'></i> Dashboard
+                </button>
+                <button class="nav-item" data-target="chat-interface">
+                    <i class='bx bxs-chat'></i> Ask Expert
+                </button>
+                <button class="nav-item">
+                    <i class='bx bxs-folder-open'></i> Documents
+                </button>
+                <button class="nav-item">
+                    <i class='bx bxs-cog'></i> Settings
+                </button>
+            </nav>
+            <div class="system-status">
+                <p>Status: <span class="online-dot"></span> Offline LLM</p>
+                <small>Model: Ollama / Llama 3</small>
+            </div>
+        </aside>
 
-    <div class="container">
+        <main class="main-content">
+            <header class="top-bar">
+                <h1>Knowledge Expert System</h1>
+                <div class="user-actions">
+                    <button class="btn-primary" id="uploadBtn">
+                        <i class='bx bx-upload'></i> Upload PDF
+                    </button>
+                </div>
+            </header>
 
-        <h1>NRSC Knowledge Expert System</h1>
+            <section class="dashboard-grid">
+                <div class="stat-card">
+                    <h3>Documents</h3>
+                    <p id="doc-count">12</p>
+                    <i class='bx bxs-file-pdf'></i>
+                </div>
+                <div class="stat-card">
+                    <h3>Vector Chunks</h3>
+                    <p id="chunk-count">1,402</p>
+                    <i class='bx bxs-layer'></i>
+                </div>
+                <div class="stat-card">
+                    <h3>System Mode</h3>
+                    <p>100% Offline</p>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
 
-        <div id="chat-box"></div>
+                <div class="workflow-card">
+                    <h3>RAG Pipeline Status</h3>
+                    <div class="steps">
+                        <div class="step completed">1. Extraction</div>
+                        <div class="step active">2. Embedding</div>
+                        <div class="step">3. Vectorization</div>
+                    </div>
+                </div>
+            </section>
 
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="Ask something...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-
+            <section class="chat-section">
+                <div id="chat-window" class="chat-window">
+                    <div class="message bot">
+                        Welcome to NRSC Knowledge System. How can I help you with your documents today?
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="Query the knowledge base...">
+                    <button id="sendBtn"><i class='bx bxs-send'></i></button>
+                </div>
+            </section>
+        </main>
     </div>
-
     <script src="script.js"></script>
-
 </body>
 </html>
